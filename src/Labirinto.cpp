@@ -338,4 +338,5 @@ void Labirinto::caminho()
     cout << "Quantidade de perigos enfrentados: " << perigo << "\n";
     cout << "--------------------------------------------------------------\n";
     cout << "Matriz final: \n\n";
+    
 }
