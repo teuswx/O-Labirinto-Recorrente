@@ -4,7 +4,7 @@
 
 ## Objetivo 🎯
 
-O jogo simula um vários labirintos onde o jogador deve chegar à posição inicial  após percorrer um caminho com todos itens consumidos. No entanto, existem barreiras e portais que o jogador pode encontrar, as quais o desviarão aleatoriamente. Além disso, o jogador possui apenas 10 vidas, o que significa que se ele ficar sem pontos de vida, o jogo termina.
+O jogo simula vários labirintos onde o jogador deve chegar à posição inicial após percorrer um caminho com todos itens consumidos. No entanto, existem barreiras e portais que o jogador pode encontrar, as quais o desviarão aleatoriamente. Além disso, o jogador possui apenas 10 vidas, o que significa que se ele ficar sem pontos de vida, o jogo termina.
 
 Para ajudar a entender melhor o jogo, imagine que você é um explorador dentro de um labirinto e seu objetivo é encontrar o caminho de volta para a posição inicial. No entanto, para fazer isso, você deve coletar todos os itens no caminho até que sua rota não possua mais itens. Mas cuidado! Existem barreiras e portais que o levarão a caminhos aleatórios, o que pode tornar a sua missão ainda mais desafiadora. E lembre-se, você só tem 10 vidas para completar o seu objetivo.
 
@@ -103,14 +103,14 @@ Resposta: Como o programa é bastante parecido com um jogo, as possibilidades pa
 
 **2. Qual o custo computacional gerado pelo programa?**
 
-Devido a quantidade de laços de repetição e estruturas de controle para manipular os dados fornecidos o custo principal é KN² , Onde K é um número aleátorio, pois depende de como o programa vai se comportar.
+Devido a quantidade de laços de repetição e estruturas de controle para manipular os dados fornecidos, o custo principal é KN² , Onde K é um número aleátorio, pois depende de como o programa vai se comportar.
 ## Conclusão :ballot_box_with_check:
 
-Durante o desenvolvimento do projeto que envolveu a manipulação de matrizes, nos deparamos com o desafio de encontrar maneiras eficientes de percorrer e acessar seus elementos. Foi elaborado um código que envolveu múltiplos laços de repetição, o que nos levou a pensar em técnicas de otimização para minimizar o custo computacional.
+Durante o desenvolvimento do projeto que envolveu a manipulação de matrizes, enfrentou-se o desafio de encontrar maneiras eficientes de percorrer e acessar seus elementos. Foi elaborado um código que envolveu múltiplos laços de repetição, o que nos levou a pensar em técnicas de otimização para minimizar o custo computacional.
 
-Ao concluir o projeto, pudemos analisar cuidadosamente o custo computacional de todo o processo, que se mostrou bastante complexo. A análise nos permitiu identificar gargalos de desempenho e implementar técnicas como a redução de operações redundantes e a utilização de estruturas de dados mais eficientes.
+Ao concluir o projeto, foi possível analisar cuidadosamente o custo computacional de todo o processo, que se mostrou bastante complexo. A análise nos permitiu identificar gargalos de desempenho e implementar técnicas como a redução de operações redundantes e a utilização de estruturas de dados mais eficientes.
 
-Essa experiência nos proporcionou um aprendizado valioso sobre técnicas de otimização de código, que podem ser aplicadas em projetos futuros. Esse conhecimento é fundamental para o desenvolvimento de soluções eficientes e escaláveis em diferentes áreas.
+Essa experiência proporcionou um aprendizado valioso sobre técnicas de otimização de código, que podem ser aplicadas em projetos futuros. Esse conhecimento é fundamental para o desenvolvimento de soluções eficientes e escaláveis em diferentes áreas.
 ## Compilação e Execução :electric_plug:
 
 O programa foi feito de acordo com a proposta e possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
