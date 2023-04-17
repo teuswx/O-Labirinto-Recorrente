@@ -27,7 +27,7 @@ void Algoritmo::algoritmo()
     {
         matriz[i] = new string[c];
     }
-    
+
     while (!arquivo_entrada.eof())
     {
         for (int i = 0; i < l; i++)
@@ -48,7 +48,7 @@ void Algoritmo::algoritmo()
         }
 
         arquivo_saida << 0 << "\n"; // adiciona um 0 na matriz para verificar se o algoritmo já passou por ela
-        
+
         // Escrever elementos da matriz no arquivo de saída
         for (int i = 0; i < l; i++)
         {
@@ -65,13 +65,18 @@ void Algoritmo::algoritmo()
         for (int i = 0; i < l; i++)
         {
             for (int j = 0; j < c; j++)
-            {   
-                if(matriz[i][j] == "*"){
+            {
+                if (matriz[i][j] == "*")
+                {
                     arquivo_saida_confere << -2 << "\t";
-                }else if(matriz[i][j] == "#"){
+                }
+                else if (matriz[i][j] == "#")
+                {
                     arquivo_saida_confere << -1 << "\t";
-                }else{
-                    arquivo_saida_confere<< 0 << "\t";
+                }
+                else
+                {
+                    arquivo_saida_confere << 0 << "\t";
                 }
             }
             arquivo_saida_confere << "\n";
@@ -79,7 +84,6 @@ void Algoritmo::algoritmo()
         arquivo_saida_confere.close();
 
         k++;
-
     }
     // Desalocar memória da matriz
     for (int i = 0; i < l; i++)
@@ -94,4 +98,59 @@ void Algoritmo::algoritmo()
     la.caminho();
     la.imprimir();
 
+    string teste;
+    ofstream arquivo_final("dataset/matriz_final.data");
+    if (!arquivo_final)
+    {
+        throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo";
+    }
+    ofstream arquivo_final_aux("dataset/matriz_final_aux.data");
+    if (!arquivo_final_aux)
+    {
+        throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo";
+    }
+
+    ifstream arquivo_inicial;
+    ifstream arquivo_inicial_aux;
+    int x;
+    x = 0;
+    for (x=0; x < k; x++)
+    {
+
+        arquivo_inicial.open(matrizes_name[x]);
+        if (!arquivo_inicial)
+        {
+            throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo";
+        }
+        arquivo_inicial >> teste;
+        arquivo_inicial_aux.open(matrizes_name_aux[x]);
+        if (!arquivo_inicial_aux)
+        {
+            throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo";
+        }
+        for (int i = 0; i < l; i++)
+        {
+            for (int j = 0; j < c; j++)
+            {
+                arquivo_inicial >> teste;
+                arquivo_final << teste << "\t";
+                arquivo_inicial_aux >> teste;
+                arquivo_final_aux << teste << "\t";
+            }
+            arquivo_final << endl;
+            arquivo_final_aux << endl;
+        }
+        arquivo_final << "\n";
+        arquivo_final_aux << "\n";
+        arquivo_inicial.close();
+        arquivo_inicial_aux.close();
+    }
+  
+    arquivo_final.close();
+    arquivo_final_aux.close();
+
+    for(int i=0; i < k; i++){
+        remove(matrizes_name_aux[i].c_str());
+        remove(matrizes_name[i].c_str());
+    }
 }
