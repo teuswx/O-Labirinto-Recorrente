@@ -15,10 +15,10 @@ void Algoritmo::algoritmo()
     }
     cout << "\n\n";
     int l, c;
-
+    string descartar;
     // lê o tamanho da matriz
     arquivo_entrada >> l >> c;
-
+    arquivo_entrada >> descartar;
     int k = 0;
 
     // aloca esoaço para a matriz

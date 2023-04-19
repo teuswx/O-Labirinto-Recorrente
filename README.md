@@ -10,7 +10,7 @@ Para ajudar a entender melhor o jogo, imagine que você é um explorador dentro 
 
 ## Lógica :bulb:
 
-Para começar o programa o arquivo "input.data" deverá ser inserido na pasta "data", possuir matrizes com o tamanho de linhas e colunas já definidas na primeira linha, posteirormente conter números positivos(itens), #(barreiras) e *(perigos). Arquivo exemplo:
+Para começar o programa o arquivo "input.data" deverá ser inserido na pasta "data", possuir matrizes com o tamanho de linhas e colunas já definidas na primeira linha, posteriormente conter números positivos(itens), #(barreiras) e *(perigos). Arquivo exemplo:
 ##### input.data
 ![image_2023-04-10_220838468](https://user-images.githubusercontent.com/102326098/231029225-c008ab0e-ad25-4e98-b8f6-83db873285b7.png)
 

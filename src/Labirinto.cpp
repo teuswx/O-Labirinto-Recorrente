@@ -164,7 +164,7 @@ void Labirinto::verifica_casas(){
         }
         arquivo.close();
         cout << "--------------------------------------------------------------\n";
-        cout << "Quantidade de casas não percorridas da matriz " << x << " : " << cont_nao_passou << endl;
+        cout << "Quantidade de casas não percorridas da matriz " << x << ": " << cont_nao_passou << endl;
     }
     cout << "--------------------------------------------------------------\n";
     cout << "Quantidade total de casas percorridas: " << cont_passou<< endl;
