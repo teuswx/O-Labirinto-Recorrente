@@ -103,7 +103,7 @@ Resposta: Como o programa é bastante parecido com um jogo, as possibilidades pa
 
 **2. Qual o custo computacional gerado pelo programa?**
 
-Devido a quantidade de laços de repetição e estruturas de controle para manipular os dados fornecidos, o custo principal é KN² , Onde K é um número aleátorio, pois depende de como o programa vai se comportar.
+Devido a quantidade de laços de repetição e estruturas de controle para manipular os dados fornecidos, o custo principal é kn²m, Onde k é um número aleátorio, pois depende de como o programa vai se comportar, n é o tamanho da matriz e m é a quantidade de matrizes. Este é o pior custo gerado pelo programa pois ocorre quando o algoritmo percorre todas as casas(n) e matrizes(m) em uma quantidade aleátoria de veze(k).
 ## Conclusão :ballot_box_with_check:
 
 Durante o desenvolvimento do projeto que envolveu a manipulação de matrizes, enfrentou-se o desafio de encontrar maneiras eficientes de percorrer e acessar seus elementos. Foi elaborado um código que envolveu múltiplos laços de repetição, o que nos levou a pensar em técnicas de otimização para minimizar o custo computacional.

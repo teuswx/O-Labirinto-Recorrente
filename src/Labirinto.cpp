@@ -19,31 +19,6 @@ Labirinto::Labirinto(int tam_matriz_vector, int tam_matriz, vector<string> matri
         matriz_aux[i] = new short int[tam_matriz];
     }
 }
-
-// função para imprimir a matriz
-void Labirinto::imprimir()
-{
-    fstream arquivo;
-    string aux;
-
-    for (int x = 0; x < tam_matriz_vector; x++)
-    {
-        arquivo.open(matrizes_name[x]);
-        arquivo >> aux;
-        for (int i = 0; i < tam_matriz; i++)
-        {
-            for (int j = 0; j < tam_matriz; j++)
-            {
-                arquivo >> matriz[i][j];
-                cout << matriz[i][j] << "\t";
-            }
-            cout << "\n";
-        }
-        cout << "\n";
-        arquivo.close();
-    }
-}
-
 // função para carregar a matriz e preencher
 void Labirinto::comecar_matriz(int x)
 {
@@ -51,41 +26,22 @@ void Labirinto::comecar_matriz(int x)
     string valor;
 
     arquivo.open(matrizes_name[x]);
-    arquivo >> valor;
-    for (int i = 0; i < tam_matriz; i++)
-    {
-        for (int j = 0; j < tam_matriz; j++)
-        {
-            arquivo >> valor;
-            if (valor == "#")
-            {
-                matriz[i][j] = -1;
-            }
-            else if (valor == "*")
-            {
-                matriz[i][j] = -2;
-            }
-            else
-            {
-                matriz[i][j] = stoi(valor);
-            }
-        }
-    }
-    arquivo.close();
-
+    arquivo >> valor;    
     arquivo_aux.open(matrizes_name_aux[x]);
 
     for (int i = 0; i < tam_matriz; i++)
     {
         for (int j = 0; j < tam_matriz; j++)
         {
+            arquivo >> valor;
+            matriz[i][j] = stoi(valor);
             arquivo_aux >> valor;
             matriz_aux[i][j] = stoi(valor);
             
         }
     }
     arquivo_aux.close();
-
+    arquivo.close();
 }
 
 // função apra sobreescrever a matriz para salvar os dados das casas
@@ -136,7 +92,7 @@ bool Labirinto::verifica_passagem_matriz()
     return verifica;
 }
 
-//função para verificar quantas casas da matriz o persongame passou e quantas não
+//função para verificar quantas casas da matriz o personagem passou e quantas não
 void Labirinto::verifica_casas(){
     fstream arquivo;
     string aux;
@@ -144,6 +100,8 @@ void Labirinto::verifica_casas(){
 
     
     cont_passou = 0;
+    cout << "--------------------------------------------------------------\n";
+    cout << "Quantidade de casas não percorridas de cada matriz:" << endl;
     for (int x = 0; x < tam_matriz_vector; x++)
     {
         cont_nao_passou = 0;
@@ -163,8 +121,8 @@ void Labirinto::verifica_casas(){
             }
         }
         arquivo.close();
-        cout << "--------------------------------------------------------------\n";
-        cout << "Quantidade de casas não percorridas da matriz " << x << ": " << cont_nao_passou << endl;
+        
+        cout << "matriz " << x << ": " << cont_nao_passou << endl;
     }
     cout << "--------------------------------------------------------------\n";
     cout << "Quantidade total de casas percorridas: " << cont_passou<< endl;
@@ -196,28 +154,16 @@ void Labirinto::caminho()
 
     item = 0;
     perigo = 0;
-    do
-    {
-        cout << "Digite em qual matriz voce quer começar a partir de 0: "; // matriz definida pelo usuário
-        cin >> x;
-    } while (x < 0 || x > tam_matriz_vector);
-    
-   
+    x = 0;
     x_inicial = x;                                              
 
     comecar_matriz(x); // inicializa a matriz
 
     do
     { 
-        cout << "Digite a posição x inicial do seu personagem: "; // posição de linha definida pelo usuário
-        cin >> i;
-        cout << "Digite a posição y inicial do seu personagem: "; // posição de coluna definida pelo usuário
-        cin >> j;
-        if(matriz[i][j] == -1){
-            cout << "\nAtenção! essa posição é uma parede o personagem não pode começar ai\n";
-            cout << "\n\nDigite novamente\n\n";
-        }
-    } while (matriz[i][j] == -1 || i < 0 || i > tam_matriz || j < 0 || j > tam_matriz); // enquanto for igual uma # o do while realiza teletransporte
+      i = numero_aleatorio_teletransporte(tam_matriz-1);
+      j = numero_aleatorio_teletransporte(tam_matriz-1);
+    } while (matriz[i][j] == -1); // enquanto for igual uma # o do while realiza teletransporte
 
     // guarda a posição inicial do personagem
     i_inicial = i;
@@ -235,8 +181,6 @@ void Labirinto::caminho()
         // inicio do personagem
         i += i_aux;
         j += j_aux;
-
-        verifica_passagem_matriz(); // verifica se ja passou em todas matrizes
         
         if (x_inicial == x && j_inicial == j && i_inicial == i && caminho_zero == true && verifica_passagem_matriz() == true)
         { // verifica se todos os critérios de parada do jogo foi atendido
@@ -260,10 +204,9 @@ void Labirinto::caminho()
                 vida_tchola--;
                 if (vida_tchola == 0)
                 {
-                    cout << "\n\n!Voce morreu!\n\n";
+                    cout << "!Voce morreu!\n\n";
                     caminho = false;
                 }
-                matriz_aux[i][j] = 1;
                 perigo++;
             }
             else if (matriz[i][j] != 0) // caso seja um numero inteiro positio não nulo
@@ -298,10 +241,9 @@ void Labirinto::caminho()
             vida_tchola--;
             if (vida_tchola == 0)
             {
-                cout << "\n\nVoce morreu!\n\n";
+                cout << "Voce morreu!\n\n";
                 caminho = false;
             }
-            matriz_aux[i][j] = 1;
             perigo++;
         }
         else if (matriz[i][j] != 0) //caso seja um numero inteiro positio não nulo
@@ -326,7 +268,7 @@ void Labirinto::caminho()
             matriz_aux[i][j] = 1;
         }
 
-        if(i_inicial == i && j_inicial == j){ // começa a partida do caminho caso o personagem chegue na posição incial
+        if(i_inicial == i && j_inicial == j && x_inicial == x){ // começa a partida do caminho caso o personagem chegue na posição incial
             caminho_zero = true;
         }
     }
@@ -336,7 +278,5 @@ void Labirinto::caminho()
     cout << "Quantidade de itens consumidos: " << item << "\n";
     cout << "--------------------------------------------------------------\n";
     cout << "Quantidade de perigos enfrentados: " << perigo << "\n";
-    cout << "--------------------------------------------------------------\n";
-    cout << "Matriz final: \n\n";
-    
+    cout << "--------------------------------------------------------------\n";    
 }

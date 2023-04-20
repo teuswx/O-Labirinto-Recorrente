@@ -14,11 +14,13 @@ void Algoritmo::algoritmo()
         throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo de entrada";
     }
     cout << "\n\n";
-    int l, c;
+    int l, c, q_matrizes;
     string descartar;
+
     // lê o tamanho da matriz
     arquivo_entrada >> l >> c;
     arquivo_entrada >> descartar;
+    q_matrizes = stoi(descartar);
     int k = 0;
 
     // aloca esoaço para a matriz
@@ -28,7 +30,7 @@ void Algoritmo::algoritmo()
         matriz[i] = new string[c];
     }
 
-    while (!arquivo_entrada.eof())
+    while (k != q_matrizes)
     {
         for (int i = 0; i < l; i++)
         {
@@ -54,7 +56,17 @@ void Algoritmo::algoritmo()
         {
             for (int j = 0; j < c; j++)
             {
-                arquivo_saida << matriz[i][j] << "\t";
+
+                if (matriz[i][j] == "#")
+                {
+                    arquivo_saida<< -1 << "\t";
+                }
+                else if (matriz[i][j] == "*")
+                {
+                    arquivo_saida << -2 << "\t";
+                }else{
+                    arquivo_saida << matriz[i][j] << "\t";
+                }
             }
             arquivo_saida << endl;
         }
@@ -68,15 +80,15 @@ void Algoritmo::algoritmo()
             {
                 if (matriz[i][j] == "*")
                 {
-                    arquivo_saida_confere << -2 << "\t";
+                    arquivo_saida_confere << "-2" << "\t";
                 }
                 else if (matriz[i][j] == "#")
                 {
-                    arquivo_saida_confere << -1 << "\t";
+                    arquivo_saida_confere << "-1" << "\t";
                 }
                 else
                 {
-                    arquivo_saida_confere << 0 << "\t";
+                    arquivo_saida_confere << "0" << "\t";
                 }
             }
             arquivo_saida_confere << "\n";
@@ -96,15 +108,13 @@ void Algoritmo::algoritmo()
 
     Labirinto la(k, l, matrizes_name, matrizes_name_aux);
     la.caminho();
-    la.imprimir();
-
     string teste;
-    ofstream arquivo_final("dataset/matriz_final.data");
+    ofstream arquivo_final("dataset/output.data");
     if (!arquivo_final)
     {
         throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo";
     }
-    ofstream arquivo_final_aux("dataset/matriz_final_aux.data");
+    ofstream arquivo_final_aux("dataset/caminhos_passados.data");
     if (!arquivo_final_aux)
     {
         throw "../main.cpp::lerTxt ---> Não foi possível abrir o arquivo";
@@ -114,7 +124,7 @@ void Algoritmo::algoritmo()
     ifstream arquivo_inicial_aux;
     int x;
     x = 0;
-    for (x=0; x < k; x++)
+    for (x = 0; x < k; x++)
     {
 
         arquivo_inicial.open(matrizes_name[x]);
@@ -145,7 +155,7 @@ void Algoritmo::algoritmo()
         arquivo_inicial.close();
         arquivo_inicial_aux.close();
     }
-  
+
     arquivo_final.close();
     arquivo_final_aux.close();
 
