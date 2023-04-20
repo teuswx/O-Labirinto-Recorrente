@@ -89,7 +89,7 @@ Antes da primeira condição existem variáveis i e j auxiliares recebendo os nu
 
 **Execução**
 
-![image_2023-04-13_124157515](https://user-images.githubusercontent.com/102326098/231812851-d83d2f09-258e-4ecb-8e6b-1f752aa26034.png)
+![image](https://user-images.githubusercontent.com/102326098/233474766-c9c3e927-f1cc-4fc6-8804-4b129b682e3a.png)
 
 **Arquivo das posições passadas**
 
