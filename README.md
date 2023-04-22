@@ -10,11 +10,11 @@ Para ajudar a entender melhor o jogo, imagine que você é um explorador dentro 
 
 ## Lógica :bulb:
 
-Para começar o programa o arquivo "input.data" deverá ser inserido na pasta "data", possuir matrizes com o tamanho de linhas e colunas já definidas na primeira linha, posteriormente conter números positivos(itens), #(barreiras) e *(perigos). Arquivo exemplo:
+Para começar o programa o arquivo "input.data" deverá ser inserido na pasta "dataset", possuir matrizes com o tamanho de linhas, colunas e quantidade de matrizes já definidas na primeira linha, posteriormente conter números positivos(itens), #(barreiras) e *(perigos). Arquivo exemplo:
 ##### input.data
 ![image_2023-04-10_220838468](https://user-images.githubusercontent.com/102326098/231029225-c008ab0e-ad25-4e98-b8f6-83db873285b7.png)
 
-Para evitar o erro "stack overflow", o código da classe *Algoritmo.cpp* separa cada matriz em arquivos diferentes junto de seus auxiliares na pasta data. Posteriormente é instânciado um contrutor da classe *Labirinto* na qual é passado como parâmetro o tamanho do vector de nomes dos arquivos(*k*), o tamanho da matriz quadrada(*l*), um vector dos nomes dos arquivos gerados(*matrizes_name*) e um vector dos nomes dos arquivos auxiliares gerados(*matrizes_name_aux*).
+Para evitar o erro "stack overflow", o código da classe *Algoritmo.cpp* separa cada matriz em arquivos diferentes junto de seus auxiliares na pasta dataset. Posteriormente é instânciado um contrutor da classe *Labirinto* na qual é passado como parâmetro o tamanho do vector de nomes dos arquivos(*k*), o tamanho da matriz quadrada(*l*), um vector dos nomes dos arquivos gerados(*matrizes_name*) e um vector dos nomes dos arquivos auxiliares gerados(*matrizes_name_aux*).
 
 Os Arquivos auxiliares são criados para facilitar a verificação de passagem, no caso do programa, se o personagem passou em todas matrizes antes de chegar no seu objetivo.
 
@@ -32,7 +32,7 @@ Para gerar os números aleatórios fui utilizado a biblioteca random, o código 
         
     </code> 
 </pre>
-O algoritmo do jogo foi desenvolvido na classe *Labirinto.cpp* no método Labirinto::caminho. Para definir o caminhamento, foi necessário carregar a matriz do arquivo escolhido pelo usuário no método Labirinto::comecar_matriz no atributo matriz, após esse processo o usuário também poderá escolher em qual posição o personagem vai começar. Contudo, essa posição foi trata utilizando um do while para verificar se existe uma barreira, caso exista, outra posição será gerada. A posição incial é guardada nas variáveis x_inicial(matriz inicial), i_incial(linha inicial) e j_inicial(coluna incial).
+O algoritmo do jogo foi desenvolvido na classe *Labirinto.cpp* no método Labirinto::caminho. Para definir o caminhamento, foi necessário carregar a matriz inicial no método Labirinto::comecar_matriz no atributo matriz, após esse processo, será gerado uma posição aleatória inicial para o personagem na matriz. Contudo, essa posição foi trata utilizando um do while para verificar se existe uma barreira, caso exista, outra posição será gerada. A posição incial é guardada nas variáveis x_inicial(matriz inicial), i_incial(linha inicial) e j_inicial(coluna incial).
 
 
 A estrutura condicional do jogo é definida da seguinte maneira:
