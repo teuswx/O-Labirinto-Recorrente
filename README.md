@@ -10,7 +10,7 @@ Para ajudar a entender melhor o jogo, imagine que você é um explorador dentro 
 
 ## Lógica :bulb:
 
-Para começar o programa o arquivo "input.data" deverá ser inserido na pasta "dataset", possuir matrizes com o tamanho de linhas, colunas e quantidade de matrizes já definidas na primeira linha, posteriormente conter números positivos(itens), #(barreiras) e *(perigos). Arquivo exemplo:
+Priemiramente o programa lê o arquivo "input.data" deverá ser inserido na pasta "dataset", possuir matrizes com o tamanho de linhas, colunas e quantidade de matrizes já definidas na primeira linha, posteriormente conter números positivos(itens), #(barreiras) e *(perigos). Arquivo exemplo:
 ##### input.data
 ![image_2023-04-10_220838468](https://user-images.githubusercontent.com/102326098/231029225-c008ab0e-ad25-4e98-b8f6-83db873285b7.png)
 
@@ -18,7 +18,7 @@ Para evitar o erro "stack overflow", o código da classe *Algoritmo.cpp* separa 
 
 Os Arquivos auxiliares são criados para facilitar a verificação de passagem, no caso do programa, se o personagem passou em todas matrizes antes de chegar no seu objetivo.
 
-Para gerar os números aleatórios fui utilizado a biblioteca random, o código foi implementado nos métodos Labirinto::numero_aleatorio e Labirinto::numero_aleatorio_telestransporte na classe *Labirinto*. A definição random_device gera um número imprevisível, porém em um tempo mais lento, o que é perfeito para uitlizar como semente para um gerador rápido como o [Mersenne Twister](https://www.learncpp.com/cpp-tutorial/generating-random-numbers-using-mersenne-twister/) na definição mt19937, e por fim, colocando esses números em um intervalo utilizando a definição uniform_int_distribution dist(). Método exemplo: 
+Para gerar os números aleatórios foi utilizado a biblioteca random, o código foi implementado nos métodos Labirinto::numero_aleatorio e Labirinto::numero_aleatorio_telestransporte na classe *Labirinto*. A definição random_device gera um número imprevisível, porém em um tempo mais lento, o que é perfeito para uitlizar como semente para um gerador rápido como o [Mersenne Twister](https://www.learncpp.com/cpp-tutorial/generating-random-numbers-using-mersenne-twister/) na definição mt19937, e por fim, colocando esses números em um intervalo utilizando a definição uniform_int_distribution dist(). Método exemplo: 
 <pre>
     <code>
         
